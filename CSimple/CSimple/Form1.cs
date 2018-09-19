@@ -34,7 +34,7 @@ namespace CSimple
                 g_pProcessHandle = OpenProcess(0x0008 | 0x0010 | 0x0020, false, g_pProcess.Id);
                 foreach (ProcessModule Module in g_pProcess.Modules)
                 {
-                    if ((Module.ModuleName == "client.dll"))
+                    if ((Module.ModuleName == "client_panorama.dll"))
                         g_pClient = Module.BaseAddress;
 
                     if ((Module.ModuleName == "engine.dll"))
