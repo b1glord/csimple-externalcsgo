@@ -59,7 +59,7 @@ namespace CSimple
                 int Local = ReadMemory<int>((int)g_pClient + dwLocalPlayer);
                 int LocalTeam = ReadMemory<int>(Local + m_iTeamNum);
                 int LocalFlash = ReadMemory<int>(Local + m_flFlashMaxAlpha);
-                int LocalFov = ReadMemory<int>(Local + m_iFOVStart);
+                int LocalFov = ReadMemory<int>(Local + (m_iFOVStart - 4));
                 int LocalScope = ReadMemory<int>(Local + m_bIsScoped);
                 GlowObject GlowObj = new GlowObject();
                 #region EntityLoop
@@ -114,7 +114,7 @@ namespace CSimple
                     if (LocalFlash > 1) WriteMemory<int>(Local + m_flFlashMaxAlpha, 0);
                 if (Globals.bFov)
                     if(LocalScope == 0)
-                        if (LocalFov != 90) WriteMemory<int>(Local + m_iFOVStart, 90);
+                        if (LocalFov != 90) WriteMemory<int>(Local + (m_iFOVStart - 4), 90);
                 #endregion
 
                 Thread.Sleep(5); // to avoid huge usage CPU
